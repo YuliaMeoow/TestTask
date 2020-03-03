@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <form id="first">
+            <select id="concreteMark" class="concreteParams" required>
+                <option selected disabled value="">Выберите марку бетона</option>
+                <option value="М100 В7,5">М100 В7,5</option>
+                <option value="М150 В12,5">М150 В12,5</option>
+                <option value="М200 В15">М200 В15</option>
+                <option value="М250 В20">М250 В20</option>
+                <option value="М300 В22,5">М300 В22,5</option>
+                <option value="М350 В25">М350 В25</option>
+                <option value="М400 В30">М400 В30</option>
+                <option value="М450 В35">М450 В35</option>
+                <option value="М500 В40">М500 В40</option>
+            </select>
+            <button class="nextBtn" type="button" onclick="formHandler('first', 'second')">
+                Далее
+            </button>
+            <div class="circlesWrapper">
+                <div style="background: #333;" class="circles"></div>
+                <div class="circles"></div>
+                <div class="circles"></div>
+            </div>
+        </form>
+        <form id="second">
+            <select id="filler" class="concreteParams">
+                <option selected disabled value="">Выберите наполнитель</option>
+                <option value="Гравий">Гравий</option>
+                <option value="Гранит">Гранит</option>
+            </select>
+            <button class="nextBtn" type="button" onclick="formHandler('second', 'third')">
+                Далее
+            </button>
+            <div class="circlesWrapper">
+                <div style="background: #333;" class="circles"></div>
+                <div style="background: #333;" class="circles"></div>
+                <div class="circles"></div>
+            </div>
+        </form>
+        <form id="third">
+            <input type="number" min="1" id="capacity" placeholder="Введите объем, м3"/>
+            <button class="countBtn" type="button" onclick="finalHandler('third', 'forth')">
+                Подсчитать
+            </button>
+            <div class="circlesWrapper">
+                <div style="background: #333;" class="circles"></div>
+                <div style="background: #333;" class="circles"></div>
+                <div style="background: #333;" class="circles"></div>
+            </div>
+        </form>
+        <form id="forth" method="POST">
+            <input class="hidden-input" type="text" name="concreteMarkInput">
+            <input class="hidden-input" type="text" name="fillerInput">
+            <input class="hidden-input" type="text" name="capacityInput">
+            <input class="hidden-input" type="text" name="finalPriceInput">
+            <div class="formData">
+                <p id="concreteMarkInput"></p>
+                <p id="fillerInput"></p>
+                <p id="capacityInput"></p></br>
+                <p id="finalPriceInput" style="text-align: center; font-weight: bold;"></p>
+            </br>
+            </div>
+            <button type="button" onclick="cancel('forth', 'first')">
+                Назад
+            </button>
+            <button type="submit" onclick="formRevert()">
+                Заказать
+            </button>
+        </form>
+    </div>
+</body>
+</html>
